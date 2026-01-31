@@ -21,5 +21,7 @@ func add_to_sum(num:String):
 func end_of_round():
 	if(sum < target):
 		print("You fail so sad")
+		return -1
 	else:
 		print("yay you win")
+		return 1

@@ -12,3 +12,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func end_of_round():
+	var zero = $quota_0.end_of_round()
+	var one = $quota_1.end_of_round()
+	
+	if(zero == 1 && one == 1):
+		return 1
+	else:
+		return -1
