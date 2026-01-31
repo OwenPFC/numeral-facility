@@ -70,12 +70,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				return
 			
 			hit_pos = global_transform.affine_inverse() * hit_pos
+			hit_pos.x += plane_mesh.size.x / 2
+			hit_pos.y += plane_mesh.size.y / 2
 			
 			var screen_uv := Vector2(hit_pos.x, hit_pos.y)
-
-			# convert to 0.0-1.0 rather than -1.0, 1.0
-			screen_uv += Vector2(1.0, 1.0)
-			screen_uv /= 2
+			screen_uv /= plane_mesh.size
 
 			screen_uv.y = 1 - screen_uv.y
 			event.position = screen_uv * Vector2(sub_viewport.size)

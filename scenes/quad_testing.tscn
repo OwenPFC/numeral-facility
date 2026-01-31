@@ -45,3 +45,4 @@ radius = 0.189749
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.13048)
+current = true
