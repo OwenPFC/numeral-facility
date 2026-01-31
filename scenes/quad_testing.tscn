@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6bt08pfqec0w"]
+
+[ext_resource type="Script" path="res://scripts/3d_mouse_to_2d.gd" id="1_x3c1b"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gc4l8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ktkai"]
+sky_material = SubResource("ProceduralSkyMaterial_gc4l8")
+
+[sub_resource type="Environment" id="Environment_v2mi8"]
+background_mode = 2
+sky = SubResource("Sky_ktkai")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_7mgp3"]
+
+[node name="QuadTesting" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v2mi8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.110118, -0.978894, -0.172168, 0.441055, -0.203359, 0.874137, -0.890699, 0.0203226, 0.45414, 0, 0, 0.774546)
+mesh = SubResource("QuadMesh_7mgp3")
+script = ExtResource("1_x3c1b")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 0.189749
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+radius = 0.189749
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
+radius = 0.189749
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="."]
+radius = 0.189749
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.13048)
