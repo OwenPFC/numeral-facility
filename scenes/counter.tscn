@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://030erml5tebn"]
+
+[ext_resource type="Script" path="res://scripts/counter.gd" id="1_q16j2"]
+[ext_resource type="Texture2D" uid="uid://cpq71e0u2ymxj" path="res://assets/rectangle.png" id="1_wph21"]
+
+[node name="counter" type="Node2D"]
+script = ExtResource("1_q16j2")
+
+[node name="Rectangle" type="Sprite2D" parent="."]
+position = Vector2(-1, 1)
+scale = Vector2(0.451923, 1)
+texture = ExtResource("1_wph21")
+
+[node name="number" type="Label" parent="."]
+offset_left = -86.0
+offset_top = -33.0
+offset_right = 79.0
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "0"
+horizontal_alignment = 1
