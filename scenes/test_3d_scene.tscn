@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://duywl4wgsqbev"]
+[gd_scene load_steps=10 format=3 uid="uid://duywl4wgsqbev"]
 
 [ext_resource type="PackedScene" uid="uid://smmdmxxp0don" path="res://monitor.glb" id="1_7u456"]
-[ext_resource type="PackedScene" uid="uid://b5fcs7tecoje3" path="res://scenes/test_conveyor.tscn" id="2_abw1i"]
 [ext_resource type="Script" path="res://scripts/3d_mouse_to_2d.gd" id="2_j5id2"]
+[ext_resource type="PackedScene" uid="uid://b3epgkbv61bdr" path="res://scenes/main_menu.tscn" id="3_6awpc"]
 
 [sub_resource type="Environment" id="Environment_162w6"]
 background_energy_multiplier = 0.0
@@ -14,8 +14,11 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_jyo1c"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4p3vc"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djtwp"]
 resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_4p3vc")
 albedo_texture = SubResource("ViewportTexture_5uflt")
 emission_enabled = true
 emission_energy_multiplier = 0.29
@@ -24,16 +27,16 @@ emission_texture = SubResource("ViewportTexture_jyo1c")
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygme4"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_djtwp")
+size = Vector2(3.2, 2.4)
 orientation = 2
 
 [node name="Test3dScene" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="monitor" parent="." instance=ExtResource("1_7u456")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401376, 0, 0.205822)
+
+[node name="Monitor1" parent="monitor" index="0"]
+transform = Transform3D(1.03244, 0, 0, 0, 1.03244, 0, 0, 0, 1.03244, 0.00457931, 1.23576, 1.93151)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.841133, 0, 0.540828, 0, 1, 0, -0.540828, 0, 0.841133, 2.418, 0.803, 4.17768)
@@ -48,13 +51,15 @@ light_color = Color(0.188235, 1, 1, 1)
 omni_range = 287.632
 
 [node name="GameMesh" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sub_viewport")]
-transform = Transform3D(0.865351, 0, 0.986559, 0, 1.21144, 0, -1.22218, 0, 0.698522, 0.400305, 0.8519, 2.1246)
+transform = Transform3D(0.544639, 0, 0.838671, 0, 1, 0, -0.838671, 0, 0.544639, 0.46065, 0.830503, 2.15337)
 mesh = SubResource("PlaneMesh_ygme4")
 script = ExtResource("2_j5id2")
 sub_viewport = NodePath("../SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="."]
+canvas_item_default_texture_filter = 0
+size = Vector2i(800, 600)
 
-[node name="TestConveyor" parent="SubViewport" instance=ExtResource("2_abw1i")]
+[node name="MainMenu" parent="SubViewport" instance=ExtResource("3_6awpc")]
 
 [editable path="monitor"]

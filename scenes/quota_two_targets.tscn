@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ccgu2exg7b6se" path="res://scenes/quota_target_amount.tscn" id="2_ymv7i"]
 
 [node name="quota_two_targets" type="Node2D"]
+position = Vector2(-87, -134)
 script = ExtResource("1_ks6vn")
 
 [node name="quota_0" parent="." instance=ExtResource("2_ymv7i")]
