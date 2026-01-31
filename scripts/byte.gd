@@ -7,6 +7,13 @@ signal reached_end
 @export var speed: float = 0.1
 
 
+var number: int = 0
+
+
+func _ready() -> void:
+	number = randi_range(0, 255)
+
+
 func _process(delta: float):
 	var new_progress_ratio = progress_ratio + (delta * speed)
 
