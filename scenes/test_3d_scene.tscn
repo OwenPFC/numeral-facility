@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://duywl4wgsqbev"]
+
+[ext_resource type="PackedScene" uid="uid://smmdmxxp0don" path="res://monitor.glb" id="1_7u456"]
+[ext_resource type="PackedScene" uid="uid://b5fcs7tecoje3" path="res://scenes/test_conveyor.tscn" id="2_abw1i"]
+
+[sub_resource type="Environment" id="Environment_162w6"]
+background_energy_multiplier = 0.0
+glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_5uflt"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jyo1c"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djtwp"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_5uflt")
+emission_enabled = true
+emission_energy_multiplier = 0.29
+emission_texture = SubResource("ViewportTexture_jyo1c")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygme4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_djtwp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ev74i"]
+albedo_color = Color(0.288518, 0.288518, 0.288518, 1)
+
+[node name="Test3dScene" type="Node3D"]
+
+[node name="monitor" parent="." instance=ExtResource("1_7u456")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401376, 0, 0.205822)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.841133, 0, 0.540828, 0, 1, 0, -0.540828, 0, 0.841133, 2.418, 0.803, 3.96)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_162w6")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251391, 0.791215, 2.11637)
+light_color = Color(0.188235, 1, 1, 1)
+omni_range = 287.632
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.866226, 0.988196, -4.3102e-08, 9.75078e-16, -5.29535e-08, -1.20881, -1.22156, 0.700744, -3.05642e-08, 0.400305, 0.8519, 2.1246)
+mesh = SubResource("PlaneMesh_ygme4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87682, 0, 0)
+material = SubResource("StandardMaterial3D_ev74i")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="TestConveyor" parent="SubViewport" instance=ExtResource("2_abw1i")]
+
+[editable path="monitor"]
