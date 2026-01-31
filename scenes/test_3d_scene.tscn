@@ -1,18 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://duywl4wgsqbev"]
+[gd_scene load_steps=22 format=3 uid="uid://duywl4wgsqbev"]
 
 [ext_resource type="PackedScene" uid="uid://smmdmxxp0don" path="res://monitor.glb" id="1_7u456"]
 [ext_resource type="Script" path="res://scripts/3d_mouse_to_2d.gd" id="2_j5id2"]
-[ext_resource type="PackedScene" uid="uid://b3epgkbv61bdr" path="res://scenes/main_menu.tscn" id="3_6awpc"]
+[ext_resource type="PackedScene" uid="uid://dq6v0cbr26sxj" path="res://scenes/main_menu.tscn" id="3_6awpc"]
+[ext_resource type="PackedScene" uid="uid://elbh6ivd4ppj" path="res://assets/monitor2.glb" id="4_kcgig"]
+[ext_resource type="PackedScene" uid="uid://bjfkb2rm1mc2r" path="res://assets/monitor3.glb" id="5_ja4ck"]
 
-[sub_resource type="Environment" id="Environment_162w6"]
-background_energy_multiplier = 0.0
-glow_enabled = true
+[sub_resource type="ViewportTexture" id="ViewportTexture_ptugu"]
+viewport_path = NodePath("Quota Monitor/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f5gwo"]
+viewport_path = NodePath("Quota Monitor/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_delx5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hi2yp"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_delx5")
+albedo_texture = SubResource("ViewportTexture_ptugu")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_f5gwo")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yu2x5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hi2yp")
+size = Vector2(1.4, 0.45)
+orientation = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5uflt"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("Main Monitor/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jyo1c"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_sopga"]
+viewport_path = NodePath("Main Monitor/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4p3vc"]
 
@@ -21,8 +40,7 @@ resource_local_to_scene = true
 next_pass = SubResource("ShaderMaterial_4p3vc")
 albedo_texture = SubResource("ViewportTexture_5uflt")
 emission_enabled = true
-emission_energy_multiplier = 0.29
-emission_texture = SubResource("ViewportTexture_jyo1c")
+emission_texture = SubResource("ViewportTexture_sopga")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygme4"]
 resource_local_to_scene = true
@@ -30,12 +48,62 @@ material = SubResource("StandardMaterial3D_djtwp")
 size = Vector2(3.2, 2.4)
 orientation = 2
 
+[sub_resource type="Environment" id="Environment_162w6"]
+background_energy_multiplier = 0.0
+glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aw6vm"]
+viewport_path = NodePath("Lever Monitor/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1k5k1"]
+viewport_path = NodePath("Lever Monitor/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c8n1u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3gmo"]
+resource_local_to_scene = true
+next_pass = SubResource("ShaderMaterial_c8n1u")
+albedo_texture = SubResource("ViewportTexture_aw6vm")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_1k5k1")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qw6rv"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_c3gmo")
+size = Vector2(1.9, 1.9)
+orientation = 2
+
 [node name="Test3dScene" type="Node3D"]
 
-[node name="monitor" parent="." instance=ExtResource("1_7u456")]
+[node name="Quota Monitor" parent="." instance=ExtResource("4_kcgig")]
+transform = Transform3D(0.77867, 0, 0.627433, 0, 1, 0, -0.627433, 0, 0.77867, 1.02729, 2.34344, 1.92639)
+
+[node name="GameMesh" type="MeshInstance3D" parent="Quota Monitor" node_paths=PackedStringArray("sub_viewport")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_yu2x5")
+skeleton = NodePath("../..")
+script = ExtResource("2_j5id2")
+sub_viewport = NodePath("../SubViewport")
+
+[node name="SubViewport" type="SubViewport" parent="Quota Monitor"]
+
+[node name="Main Monitor" parent="." instance=ExtResource("1_7u456")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401376, 0, 0.205822)
 
-[node name="Monitor1" parent="monitor" index="0"]
+[node name="SubViewport" type="SubViewport" parent="Main Monitor"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(800, 600)
+
+[node name="MainMenu" parent="Main Monitor/SubViewport" instance=ExtResource("3_6awpc")]
+
+[node name="GameMesh" type="MeshInstance3D" parent="Main Monitor" node_paths=PackedStringArray("sub_viewport")]
+transform = Transform3D(0.544639, 0, 0.838671, 0, 1, 0, -0.838671, 0, 0.544639, 0.0592743, 0.830503, 1.94755)
+mesh = SubResource("PlaneMesh_ygme4")
+skeleton = NodePath("../..")
+script = ExtResource("2_j5id2")
+sub_viewport = NodePath("../SubViewport")
+
+[node name="Monitor1" parent="Main Monitor" index="2"]
 transform = Transform3D(1.03244, 0, 0, 0, 1.03244, 0, 0, 0, 1.03244, 0.00457931, 1.23576, 1.93151)
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -46,20 +114,19 @@ current = true
 environment = SubResource("Environment_162w6")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.251391, 0.791215, 2.11637)
-light_color = Color(0.188235, 1, 1, 1)
-omni_range = 287.632
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.18221, 3.12136, 1.83196)
+light_color = Color(0.879036, 0.868619, 0, 1)
 
-[node name="GameMesh" type="MeshInstance3D" parent="." node_paths=PackedStringArray("sub_viewport")]
-transform = Transform3D(0.544639, 0, 0.838671, 0, 1, 0, -0.838671, 0, 0.544639, 0.46065, 0.830503, 2.15337)
-mesh = SubResource("PlaneMesh_ygme4")
+[node name="Lever Monitor" parent="." instance=ExtResource("5_ja4ck")]
+transform = Transform3D(0.102081, 0, -0.994776, 0, 1, 0, 0.994776, 0, 0.102081, 2.40994, 1.01106, 0.435728)
+
+[node name="GameMesh" type="MeshInstance3D" parent="Lever Monitor" node_paths=PackedStringArray("sub_viewport")]
+transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 0.031835, 0, 0.00326681)
+mesh = SubResource("PlaneMesh_qw6rv")
+skeleton = NodePath("../..")
 script = ExtResource("2_j5id2")
-sub_viewport = NodePath("../SubViewport")
+sub_viewport = NodePath("../../Quota Monitor/SubViewport")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-canvas_item_default_texture_filter = 0
-size = Vector2i(800, 600)
+[node name="SubViewport" type="SubViewport" parent="Lever Monitor"]
 
-[node name="MainMenu" parent="SubViewport" instance=ExtResource("3_6awpc")]
-
-[editable path="monitor"]
+[editable path="Main Monitor"]
