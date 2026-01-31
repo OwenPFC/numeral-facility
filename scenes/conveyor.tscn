@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt3go567is58x"]
+
+[ext_resource type="Script" path="res://scripts/conveyor.gd" id="1_s50x8"]
+
+[sub_resource type="Curve2D" id="Curve2D_jxmb2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 87, 654, 0, 0, 0, 0, 779, 81)
+}
+point_count = 2
+
+[node name="Conveyor" type="Node2D"]
+script = ExtResource("1_s50x8")
+
+[node name="ConveyorPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_jxmb2")
