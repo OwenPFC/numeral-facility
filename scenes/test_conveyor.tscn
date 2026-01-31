@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://3bkywgnyabql"]
+[gd_scene load_steps=5 format=3 uid="uid://b5fcs7tecoje3"]
 
 [ext_resource type="Script" path="res://scripts/factory.gd" id="1_0bfoy"]
 [ext_resource type="PackedScene" uid="uid://bhf7fsxm1wh0" path="res://scenes/byte_spawner.tscn" id="1_o234t"]
-[ext_resource type="PackedScene" path="res://scenes/conveyor.tscn" id="2_gomka"]
+[ext_resource type="PackedScene" uid="uid://bt3go567is58x" path="res://scenes/conveyor.tscn" id="2_gomka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbyys"]
 size = Vector2(20, 82.7344)
@@ -18,6 +18,7 @@ position = Vector2(86, 651)
 [node name="Button" type="Button" parent="."]
 offset_right = 282.0
 offset_bottom = 179.0
+
 [node name="round_timer" type="Timer" parent="."]
 wait_time = 10.0
 
