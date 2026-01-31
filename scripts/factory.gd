@@ -6,13 +6,30 @@ var two_targets = load("res://scenes/quota_two_targets.tscn")
 
 var quotas = [total_dec,target,two_targets]
 
+var canStamp = false
+var activeByte = null
+
+var activeOperation = "xor"
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_quota()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if(Input.is_action_just_pressed("stamp") && canStamp && activeByte != null):
+		mask(activeByte, activeOperation)
+	
+func mask(byte, operation:String):
+	if(operation == "xor"): 
+		var n = $numbers.xor(activeByte.number, $input.get_number())
+		activeByte.set_number(n)
+	elif(operation == "or"):
+		var n = $numbers.bor(activeByte.number, $input.get_number())
+		activeByte.set_number(n)
+	elif(operation == "and"):
+		var n = $numbers.band(activeByte.number, $input.get_number())
+		activeByte.set_number(n)
 	
 func add_quota():
 	randomize()
@@ -38,3 +55,12 @@ func byte_end(n:String):
 func _on_end_area_entered(area):
 	var byte = area.get_parent()
 	byte.connect("reached_end", byte_end.bind(byte.number))
+
+
+func _on_stamp_zone_area_entered(area):
+	canStamp = true
+	activeByte = area.get_parent()
+
+func _on_stamp_zone_area_exited(area):
+	canStamp = false
+	activeByte = null
