@@ -1,16 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://3bkywgnyabql"]
+[gd_scene load_steps=9 format=3 uid="uid://3bkywgnyabql"]
 
 [ext_resource type="Script" path="res://scripts/factory.gd" id="1_0bfoy"]
 [ext_resource type="PackedScene" uid="uid://bhf7fsxm1wh0" path="res://scenes/byte_spawner.tscn" id="1_o234t"]
 [ext_resource type="PackedScene" path="res://scenes/conveyor.tscn" id="2_gomka"]
 [ext_resource type="PackedScene" uid="uid://dcqciepsgdn5t" path="res://scenes/input.tscn" id="4_5kuky"]
 [ext_resource type="PackedScene" uid="uid://cvcxudko0tyqu" path="res://scenes/numbers.tscn" id="5_8jydo"]
+[ext_resource type="Texture2D" uid="uid://b7b7tkjynp0ks" path="res://assets/loss.png" id="6_8fwwv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbyys"]
 size = Vector2(20, 82.7344)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0kjx"]
-size = Vector2(270, 93.3557)
+size = Vector2(270, 123.163)
 
 [node name="TestConveyor" type="Node2D"]
 script = ExtResource("1_0bfoy")
@@ -25,7 +26,7 @@ offset_right = 282.0
 offset_bottom = 179.0
 
 [node name="round_timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 15.0
 
 [node name="end" type="Area2D" parent="."]
 position = Vector2(-26, 20)
@@ -39,14 +40,34 @@ shape = SubResource("RectangleShape2D_vbyys")
 position = Vector2(590, 521)
 
 [node name="stamp zone" type="Area2D" parent="."]
-position = Vector2(-156, 119)
+position = Vector2(-29, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="stamp zone"]
-position = Vector2(674, 170)
+position = Vector2(664.04, 181.087)
 rotation = -2.40969
 shape = SubResource("RectangleShape2D_i0kjx")
 
 [node name="numbers" parent="." instance=ExtResource("5_8jydo")]
+
+[node name="clock" type="Label" parent="."]
+offset_left = 346.0
+offset_top = 61.0
+offset_right = 386.0
+offset_bottom = 84.0
+
+[node name="operator" type="Label" parent="."]
+offset_left = 29.0
+offset_top = 195.0
+offset_right = 69.0
+offset_bottom = 218.0
+theme_override_font_sizes/font_size = 30
+
+[node name="loss" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(400.69, 311.713)
+rotation = -0.000733906
+scale = Vector2(1.86956, 1.59264)
+texture = ExtResource("6_8fwwv")
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="area_entered" from="end" to="." method="_on_end_area_entered"]

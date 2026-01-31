@@ -9,11 +9,11 @@ func _ready():
 	randomize()
 	
 	var which_num = randi_range(0,1)
-	target = randi_range(50, 100)
+	target = randi_range(100, 300)
 	if(which_num == 0):
-		$goal/goal_number.text = "Get " + str(target) + " 0s"
+		$goal/goal_number.text = "Stay Under: " + str(target) + " 0s"
 	else:
-		$goal/goal_number.text = "Get: " + str(target) + " 1s"
+		$goal/goal_number.text = "Stay Under: " + str(target) + " 1s"
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,11 +33,11 @@ func end_of_round():
 		return 1
 		
 func round_time():
-	return 65
+	return 20
 
 #This is for manually setting which_num in quota_two_targets
 func update_quota():
 	if(which_num == 0):
-		$goal/goal_number.text = "Get " + str(target) + " 0s"
+		$goal/goal_number.text = "Stay Under: " + str(target) + " 0s"
 	else:
-		$goal/goal_number.text = "Get: " + str(target) + " 1s"
+		$goal/goal_number.text = "Stay Under: " + str(target) + " 1s"
