@@ -6,7 +6,7 @@ var target = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	target = randi_range(200, 500)
+	target = randi_range(3000, 5000)
 	$goal/goal_number.text = "Quota: " + str(target)
 
 
