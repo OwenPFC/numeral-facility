@@ -17,7 +17,7 @@ func _process(delta):
 func add_quota():
 	randomize()
 	var curr_quota = quotas.pick_random()
-	add_child(curr_quota)
+	add_child(curr_quota.instantiate())
 	$round_timer.start()
 
 func _on_round_timer_timeout():
@@ -29,3 +29,12 @@ func _on_round_timer_timeout():
 		add_quota()
 	else:
 		print("Fail so sad")
+
+func byte_end(n:String):
+	#For now, making the assumption that our quota will always be the last child
+	var quota = get_children()[get_child_count()-1]
+	quota.add_to_sum(n)
+
+func _on_end_area_entered(area):
+	var byte = area.get_parent()
+	byte.connect("reached_end", byte_end.bind(byte.number))

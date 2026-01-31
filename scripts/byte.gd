@@ -7,11 +7,15 @@ signal reached_end
 @export var speed: float = 0.1
 
 
-var number: int = 0
+var number: String = "00000000"
 
 
 func _ready() -> void:
-	number = randi_range(0, 255)
+	var num = randi_range(0, 255)
+	print(num)
+	number = int_to_binary(num)
+	$number.text = "[b]" + number
+	print($number.text)
 
 
 func _process(delta: float):
@@ -23,3 +27,11 @@ func _process(delta: float):
 		queue_free()
 
 	progress_ratio = new_progress_ratio
+	
+func int_to_binary(n:int):
+	var bin = String.num_uint64(n,2)
+	while(len(bin)<8):
+		bin = "0" + bin
+	return bin
+		
+	

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cpq71e0u2ymxj" path="res://assets/rectangle.png" id="3_d8egg"]
 
 [node name="quota_target_amount" type="Node2D"]
+position = Vector2(590, 110)
 script = ExtResource("1_a824r")
 
 [node name="counter" parent="." instance=ExtResource("2_23076")]
