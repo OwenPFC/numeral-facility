@@ -21,3 +21,7 @@ func end_of_round():
 		return 1
 	else:
 		return -1
+
+func add_to_sum(num:String):
+	$quota_0.add_to_sum(num.count("0"))
+	$quota_1.add_to_sum(num.count("1"))
