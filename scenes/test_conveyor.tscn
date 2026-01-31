@@ -20,6 +20,10 @@ position = Vector2(86, 651)
 
 [node name="Conveyor" parent="." instance=ExtResource("2_gomka")]
 
+[node name="Button" type="Button" parent="."]
+offset_right = 282.0
+offset_bottom = 179.0
+
 [node name="round_timer" type="Timer" parent="."]
 wait_time = 10.0
 
