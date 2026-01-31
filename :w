@@ -1,0 +1,38 @@
+extends MeshInstance3D
+
+@export var sphere: Node3D
+
+# if its not a plane what are we doing bro
+@onready var plane_mesh: PlaneMesh = mesh
+
+var triangle_1: Array[Vector3] = []
+var triangle_2: Array[Vector3] = []
+
+
+func _ready() -> void:
+	triangle_1 = [
+		Vector3.ZERO,
+		Vector3.RIGHT * plane_mesh.size.x,
+		Vector3.FORWARD * plane_mesh.size.y
+	]
+	triangle_2 = [
+		Vector3.ONE * Vector3(plane_mesh.size.x, 0, plane_mesh.size.y),
+		Vector3.RIGHT * plane_mesh.size.x,
+		Vector3.FORWARD * plane_mesh.size.y
+	]
+
+	for i in range(triangle_1.size()):
+		triangle_1[i] *= transform
+		triangle_2[i] *= transform
+
+		triangle_1[i] += position
+		triangle_2[i] += position
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	pass
+
+
+func _process(delta: float):
+	sphere.position = triangle_1[0]
+
