@@ -17,4 +17,4 @@ func bor(x:String,y:String):
 	return x.bin_to_int() | y.bin_to_int()
 	
 func band(x:String,y:String):
-	return x.bin_to_int() & y.bin_to_int()	
+	return x.bin_to_int() & y.bin_to_int()
