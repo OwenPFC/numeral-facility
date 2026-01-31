@@ -4,7 +4,7 @@ extends PathFollow2D
 signal reached_end
 
 
-@export var speed: float = 0.01
+@export var speed: float = 0.000001
 
 
 var number: String = "00000000"

@@ -3,8 +3,8 @@ extends Node2D
 
 
 @export var byte_scene: PackedScene
-
-
+	
+	
 func _on_spawn_timer_timeout():
 	# the conveyor must exist
 	if Conveyor.instance == null:

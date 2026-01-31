@@ -22,6 +22,9 @@ func end_of_round():
 	else:
 		return -1
 
+func round_time():
+	return 90
+
 func add_to_sum(num:String):
 	$quota_0.add_to_sum(num)
 	$quota_1.add_to_sum(num)
