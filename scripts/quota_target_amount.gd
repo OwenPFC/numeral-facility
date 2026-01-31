@@ -29,8 +29,10 @@ func add_to_sum(num:String):
 func end_of_round():
 	if(sum < target):
 		print("You lose")
+		return -1
 	else:
 		print("Yippie")
+		return 1
 
 #This is for manually setting which_num in quota_two_targets
 func update_quota():
