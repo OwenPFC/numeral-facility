@@ -8,7 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
 	
 func xor(x:String,y:String):
 	return x.bin_to_int() ^ y.bin_to_int()
