@@ -1,11 +1,18 @@
-extends Node2D
+extends PathFollow2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+signal reached_end
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+@export var speed: float = 0.1
+
+
+func _process(delta: float):
+	var new_progress_ratio = progress_ratio + (delta * speed)
+
+	# detect if it has reached the end
+	if new_progress_ratio >= 1:
+		reached_end.emit()
+		queue_free()
+
+	progress_ratio = new_progress_ratio

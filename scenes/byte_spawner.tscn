@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhf7fsxm1wh0"]
+
+[ext_resource type="Script" path="res://scripts/byte_spawner.gd" id="1_l8a0q"]
+[ext_resource type="PackedScene" uid="uid://bguvqlojmgaxb" path="res://scenes/byte.tscn" id="2_mvml2"]
+
+[node name="ByteSpawner" type="Node2D"]
+position = Vector2(79, 648)
+script = ExtResource("1_l8a0q")
+byte_scene = ExtResource("2_mvml2")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
