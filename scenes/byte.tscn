@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bguvqlojmgaxb"]
+
+[ext_resource type="Texture2D" uid="uid://unslj3k1bh57" path="res://assets/slide.png" id="1_wrllf"]
+
+[node name="byte" type="Node2D"]
+
+[node name="slide" type="Sprite2D" parent="."]
+rotation = 0.0216454
+texture = ExtResource("1_wrllf")
+
+[node name="number" type="RichTextLabel" parent="."]
+offset_left = -48.0
+offset_top = -55.0
+offset_right = 107.0
+offset_bottom = 3.0
+rotation = 0.546074
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b]"
+fit_content = true
+scroll_active = false

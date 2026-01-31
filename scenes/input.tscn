@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqciepsgdn5t"]
+
+[ext_resource type="Script" path="res://scripts/input.gd" id="1_v1id0"]
+[ext_resource type="Texture2D" uid="uid://cpq71e0u2ymxj" path="res://assets/rectangle.png" id="2_o21um"]
+
+[node name="input" type="Node2D"]
+script = ExtResource("1_v1id0")
+
+[node name="background" type="Sprite2D" parent="."]
+texture = ExtResource("2_o21um")
+
+[node name="number" type="TextEdit" parent="."]
+offset_left = 362.0
+offset_top = 203.0
+offset_right = 607.0
+offset_bottom = 304.0
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_placeholder_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+placeholder_text = "00000000"
