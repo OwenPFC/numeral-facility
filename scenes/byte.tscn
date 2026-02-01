@@ -1,26 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://bguvqlojmgaxb"]
 
 [ext_resource type="Script" path="res://scripts/byte.gd" id="1_538jd"]
-[ext_resource type="Texture2D" uid="uid://unslj3k1bh57" path="res://assets/slide.png" id="1_wrllf"]
+[ext_resource type="Texture2D" uid="uid://cpq71e0u2ymxj" path="res://assets/rectangle.png" id="2_7pdee"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4sn5"]
-size = Vector2(239.101, 69.496)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjvk1"]
+size = Vector2(143, 36)
 
 [node name="byte" type="PathFollow2D"]
-rotation = -0.529798
 script = ExtResource("1_538jd")
-speed = 0.2
+speed = 0.055
 
-[node name="slide" type="Sprite2D" parent="."]
-rotation = 0.0216454
-texture = ExtResource("1_wrllf")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.50001, 0.500001)
+scale = Vector2(0.372596, 0.290541)
+texture = ExtResource("2_7pdee")
 
 [node name="number" type="RichTextLabel" parent="."]
-offset_left = -48.0
-offset_top = -55.0
-offset_right = 107.0
-offset_bottom = 3.0
-rotation = 0.546074
+offset_left = -73.0
+offset_top = -18.0
+offset_right = 76.0
+offset_bottom = 19.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
@@ -31,6 +30,5 @@ scroll_active = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1.1226, 6.71471)
-rotation = 0.548758
-shape = SubResource("RectangleShape2D_d4sn5")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_bjvk1")

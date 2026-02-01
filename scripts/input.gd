@@ -4,6 +4,7 @@ var canType = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$number.add_theme_constant_override("outline_size",8)
+	$background.animation = "stamping"
 
 
 func get_number():

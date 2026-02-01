@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://duywl4wgsqbev"]
+[gd_scene load_steps=22 format=3 uid="uid://cdr778gry045q"]
 
 [ext_resource type="PackedScene" uid="uid://smmdmxxp0don" path="res://monitor.glb" id="1_7u456"]
 [ext_resource type="Script" path="res://scripts/3d_mouse_to_2d.gd" id="2_j5id2"]
-[ext_resource type="PackedScene" uid="uid://dq6v0cbr26sxj" path="res://scenes/main_menu.tscn" id="3_6awpc"]
+[ext_resource type="PackedScene" path="res://scenes/main_menu.tscn" id="3_6awpc"]
 [ext_resource type="PackedScene" uid="uid://elbh6ivd4ppj" path="res://assets/monitor2.glb" id="4_kcgig"]
 [ext_resource type="PackedScene" uid="uid://bjfkb2rm1mc2r" path="res://assets/monitor3.glb" id="5_ja4ck"]
 
@@ -90,6 +90,9 @@ sub_viewport = NodePath("../SubViewport")
 [node name="Main Monitor" parent="." instance=ExtResource("1_7u456")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.401376, 0, 0.205822)
 
+[node name="Monitor1" parent="Main Monitor" index="0"]
+transform = Transform3D(1.03244, 0, 0, 0, 1.03244, 0, 0, 0, 1.03244, 0.00457931, 1.23576, 1.93151)
+
 [node name="SubViewport" type="SubViewport" parent="Main Monitor"]
 canvas_item_default_texture_filter = 0
 size = Vector2i(800, 600)
@@ -102,9 +105,6 @@ mesh = SubResource("PlaneMesh_ygme4")
 skeleton = NodePath("../..")
 script = ExtResource("2_j5id2")
 sub_viewport = NodePath("../SubViewport")
-
-[node name="Monitor1" parent="Main Monitor" index="2"]
-transform = Transform3D(1.03244, 0, 0, 0, 1.03244, 0, 0, 0, 1.03244, 0.00457931, 1.23576, 1.93151)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.841133, 0, 0.540828, 0, 1, 0, -0.540828, 0, 0.841133, 2.418, 0.803, 4.17768)
