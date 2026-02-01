@@ -17,5 +17,5 @@ func _on_spawn_timer_timeout():
 	print("wait time: " + str($SpawnTimer.wait_time))
 	
 func lower_time():
-	$SpawnTimer.wait_time-=.05
+	$SpawnTimer.wait_time-=.1
 

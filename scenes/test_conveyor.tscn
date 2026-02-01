@@ -84,9 +84,9 @@ top_level = true
 
 [node name="loss" type="Sprite2D" parent="lose_screen"]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(407.617, 303.97)
+position = Vector2(412.566, 304.673)
 rotation = -0.000733906
-scale = Vector2(3.02936, 2.5099)
+scale = Vector2(3.61727, 2.9231)
 texture = ExtResource("5_axc4n")
 
 [node name="Label" type="Label" parent="lose_screen"]
