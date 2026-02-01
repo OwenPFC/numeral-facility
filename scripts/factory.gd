@@ -1,12 +1,14 @@
 extends Node2D
 
+
+const main_menu = preload("res://scenes/main_menu.tscn")
 var total_dec = load("res://scenes/quota_total_decimal.tscn")
 var target = load("res://scenes/quota_target_amount.tscn")
 var two_targets = load("res://scenes/quota_two_targets.tscn")
 var under = load("res://scenes/quota_under.tscn")
 
-#var quotas = [total_dec,target,two_targets, under]
-var quotas = [under]
+var quotas = [total_dec,target,two_targets, under]
+#var quotas = [under]
 var operators = ["xor", "or", "and", "nand", "xor", "xor", "xor", "nand", "nand"]
 
 var canStamp = false
@@ -103,4 +105,4 @@ func _on_stamp_zone_area_exited(area):
 	
 	
 func _on_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	MonitorSceneLoader.load_scene_to_monitors(main_menu)
