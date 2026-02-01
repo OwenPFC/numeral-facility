@@ -6,7 +6,7 @@ var two_targets = load("res://scenes/quota_two_targets.tscn")
 var under = load("res://scenes/quota_under.tscn")
 
 #var quotas = [total_dec,target,two_targets, under]
-var quotas = [target]
+var quotas = [under]
 var operators = ["xor", "or", "and", "nand", "xor", "xor", "xor", "nand", "nand"]
 
 var canStamp = false
@@ -77,7 +77,7 @@ func _on_round_timer_timeout():
 		quota.free()
 		add_quota()
 	else:
-		$loss.visible = true
+		$lose_screen.visible = true
 		print("Fail so sad")
 
 func byte_end(n:String):
@@ -102,4 +102,5 @@ func _on_stamp_zone_area_exited(area):
 	activeBytes.erase(byte)
 	
 	
-	
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

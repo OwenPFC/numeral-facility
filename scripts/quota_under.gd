@@ -8,8 +8,8 @@ var which_num = 0
 func _ready():
 	randomize()
 	
-	var which_num = randi_range(0,1)
-	target = randi_range(100, 300)
+	which_num = randi_range(0,1)
+	target = randi_range(80, 130)
 	if(which_num == 0):
 		$goal/goal_number.text = "Stay Under: " + str(target) + " 0s"
 	else:
@@ -36,7 +36,7 @@ func end_of_round():
 		return 1
 		
 func round_time():
-	return 40
+	return 50
 
 #This is for manually setting which_num in quota_two_targets
 func update_quota():
