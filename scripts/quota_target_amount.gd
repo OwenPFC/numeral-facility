@@ -20,7 +20,6 @@ func _process(delta):
 	pass
 	
 func add_to_sum(num:String):
-	print("in add_to_sum")
 	if(which_num == 0):
 		sum += num.count("0")
 	else:
