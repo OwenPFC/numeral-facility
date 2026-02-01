@@ -6,5 +6,4 @@ func _ready():
 	Global.top_monitor = $TopMonitor/GameMesh
 	Global.side_monitor = $SideMonitor/GameMesh
 	
-
 	Global.init_monitor_mappings()

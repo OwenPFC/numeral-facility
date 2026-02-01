@@ -10,6 +10,7 @@ func load_scene_to_monitors(scene: PackedScene) -> void:
 		
 		var monitor_node := instance.find_child(mapping)
 		if monitor_node != null:
+			monitor_node.owner = null
 			monitor_node.reparent(monitor.sub_viewport)
 	
 	instance.queue_free()
@@ -17,7 +18,6 @@ func load_scene_to_monitors(scene: PackedScene) -> void:
 
 func remove_children(node: Node) -> void:
 	for child: Node in node.get_children():
-		node.remove_child(node)
 		child.queue_free()
 
 
