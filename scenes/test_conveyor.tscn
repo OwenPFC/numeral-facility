@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dcqciepsgdn5t" path="res://scenes/input.tscn" id="4_5kuky"]
 [ext_resource type="PackedScene" uid="uid://cvcxudko0tyqu" path="res://scenes/numbers.tscn" id="5_8jydo"]
 [ext_resource type="Texture2D" uid="uid://vk6ga1pgokjx" path="res://assets/white.png" id="5_axc4n"]
-[ext_resource type="Texture2D" uid="uid://b7b7tkjynp0ks" path="res://assets/loss.png" id="6_8fwwv"]
 [ext_resource type="Texture2D" uid="uid://cpq71e0u2ymxj" path="res://assets/rectangle.png" id="6_t42hc"]
+[ext_resource type="FontFile" uid="uid://dcwln4gn3ncc5" path="res://assets/Press_Start_2P/PressStart2P-Regular.ttf" id="8_8ec2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vbyys"]
 size = Vector2(71.9669, 82.7344)
@@ -78,15 +78,44 @@ offset_top = 308.0
 offset_right = 468.0
 offset_bottom = 350.0
 
-[node name="loss" type="Sprite2D" parent="."]
+[node name="lose_screen" type="Node2D" parent="."]
 visible = false
 top_level = true
-position = Vector2(400.69, 311.713)
+
+[node name="loss" type="Sprite2D" parent="lose_screen"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(407.617, 303.97)
 rotation = -0.000733906
-scale = Vector2(1.86956, 1.59264)
-texture = ExtResource("6_8fwwv")
+scale = Vector2(3.02936, 2.5099)
+texture = ExtResource("5_axc4n")
+
+[node name="Label" type="Label" parent="lose_screen"]
+offset_left = 38.0
+offset_top = 47.0
+offset_right = 774.0
+offset_bottom = 440.0
+theme_override_fonts/font = ExtResource("8_8ec2o")
+theme_override_font_sizes/font_size = 30
+text = "You failed to meet your quota
+
+
+You have been terminated :(
+
+
+For information about your future with the company, please click below"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="lose_screen"]
+offset_left = 150.0
+offset_top = 455.0
+offset_right = 683.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("8_8ec2o")
+theme_override_font_sizes/font_size = 25
+text = "Severance Information"
 
 [connection signal="timeout" from="round_timer" to="." method="_on_round_timer_timeout"]
 [connection signal="area_entered" from="end" to="." method="_on_end_area_entered"]
 [connection signal="area_entered" from="stamp zone" to="." method="_on_stamp_zone_area_entered"]
 [connection signal="area_exited" from="stamp zone" to="." method="_on_stamp_zone_area_exited"]
+[connection signal="pressed" from="lose_screen/Button" to="." method="_on_button_pressed"]
