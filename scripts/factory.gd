@@ -8,7 +8,6 @@ var two_targets = load("res://scenes/quota_two_targets.tscn")
 var under = load("res://scenes/quota_under.tscn")
 
 var quotas = [total_dec,target,two_targets, under]
-#var quotas = [under]
 var operators = ["xor", "or", "and", "nand", "xor", "xor", "xor", "nand", "nand"]
 
 var canStamp = false
@@ -30,9 +29,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(Input.is_action_just_pressed("stamp") && activeBytes.size() > 0):
-		print(activeBytes.size())
 		activeBytes.erase(activeByte)
-		print(activeBytes.size())
 		$input.get_child(0).play()
 		mask(activeByte, activeOperation)
 		activeOperation = operators.pick_random()
@@ -52,12 +49,11 @@ func mask(byte, operation:String):
 		var n = $numbers.band(activeByte.number, $input.get_number())
 		activeByte.set_number(n)
 	elif(operation == "nand"):
-		print("original: " + activeByte.number)
 		var n = $numbers.nand(activeByte.number, $input.get_number())
 		activeByte.set_number(n)
 	$ByteSpawner.lower_time()
 	if($ByteSpawner.speed < 1):
-			$ByteSpawner.speed += .02
+			$ByteSpawner.speed += .03
 		
 func add_quota():
 	randomize()
@@ -85,12 +81,10 @@ func _on_round_timer_timeout():
 func byte_end(n:String):
 	#For now, making the assumption that our quota will always be the last child
 	var quota = get_children()[get_child_count()-1]
-	print("adding to sum")
 	quota.add_to_sum(n)
 
 func _on_end_area_entered(area):
 	var byte = area.get_parent()
-	print(byte.number)
 	byte.connect("reached_end", byte_end.bind(byte.number))
 
 

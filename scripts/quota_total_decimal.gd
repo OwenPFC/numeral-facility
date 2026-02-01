@@ -15,7 +15,7 @@ func _process(delta):
 	pass
 	
 func round_time():
-	return 75
+	return 68
 
 func add_to_sum(num:String):
 	sum += num.bin_to_int()
