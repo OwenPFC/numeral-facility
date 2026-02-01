@@ -8,7 +8,7 @@ func load_scene_to_monitors(scene: PackedScene) -> void:
 		var monitor: MonitorMesh = Global.monitor_mappings[mapping]
 		remove_children(monitor.sub_viewport)
 		
-		var monitor_node := instance.find_child(mapping)
+		var monitor_node := instance.get_node(mapping)
 		if monitor_node != null:
 			monitor_node.owner = null
 			monitor_node.reparent(monitor.sub_viewport)

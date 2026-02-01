@@ -58,13 +58,14 @@ func mask(byte, operation:String):
 func add_quota():
 	randomize()
 	var curr_quota = quotas.pick_random()
-	add_child(curr_quota.instantiate())
-	var q = get_children()[get_child_count()-1]
+	
+	#top_monitor.add_child(curr_quota.instantiate())
+	#var q = top_monitor.get_children()[top_monitor.get_child_count()-1]
 	
 	activeOperation = operators.pick_random()
 	$input/operator.text = activeOperation
 	
-	$round_timer.wait_time = q.round_time()
+	#$round_timer.wait_time = q.round_time()
 	$round_timer.start()
 
 func _on_round_timer_timeout():
@@ -81,10 +82,12 @@ func _on_round_timer_timeout():
 func byte_end(n:String):
 	#For now, making the assumption that our quota will always be the last child
 	var quota = get_children()[get_child_count()-1]
+	print("adding to sum")
 	quota.add_to_sum(n)
 
 func _on_end_area_entered(area):
 	var byte = area.get_parent()
+	print("in area")
 	byte.connect("reached_end", byte_end.bind(byte.number))
 
 
@@ -100,3 +103,4 @@ func _on_stamp_zone_area_exited(area):
 	
 func _on_button_pressed():
 	MonitorSceneLoader.load_scene_to_monitors(main_menu)
+
