@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhagwufsyu180"]
+
+[ext_resource type="Texture2D" uid="uid://b7b7tkjynp0ks" path="res://assets/loss.png" id="1_uc8ip"]
+[ext_resource type="Texture2D" uid="uid://unslj3k1bh57" path="res://assets/slide.png" id="2_cxatm"]
+
+[node name="TestMonitors" type="Node2D"]
+
+[node name="MainMonitor" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MainMonitor"]
+texture = ExtResource("1_uc8ip")
+
+[node name="TopMonitor" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="TopMonitor"]
+texture = ExtResource("2_cxatm")
+
+[node name="SideMonitor" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="SideMonitor"]
+texture = ExtResource("2_cxatm")

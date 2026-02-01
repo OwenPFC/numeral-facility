@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq6v0cbr26sxj"]
+[gd_scene load_steps=10 format=3 uid="uid://dq6v0cbr26sxj"]
 
 [ext_resource type="Theme" uid="uid://c1xawayic015h" path="res://assets/main_theme.tres" id="1_4xwup"]
 [ext_resource type="Texture2D" uid="uid://bth5bohgsls0b" path="res://assets/ui/logo.png" id="1_ylir1"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="2_duacu"]
+[ext_resource type="PackedScene" uid="uid://o7suxrvsrnir" path="res://scenes/main.tscn" id="3_o41oi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eixy6"]
 
@@ -28,6 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4xwup")
 script = ExtResource("2_duacu")
+main_game_scene = ExtResource("3_o41oi")
 
 [node name="ColorRect" type="ColorRect" parent="MainMenu"]
 layout_mode = 1
