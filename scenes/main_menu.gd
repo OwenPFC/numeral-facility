@@ -2,7 +2,7 @@ class_name MainMenu
 extends Control
 
 
-@export var main_game_scene: PackedScene = preload("res://scenes/main.tscn")
+@export var main_game_scene: PackedScene = load("res://scenes/main.tscn")
 
 
 func _on_play_button_pressed():
