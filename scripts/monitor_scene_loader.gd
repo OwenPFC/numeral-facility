@@ -2,7 +2,7 @@ extends Node
 
 
 func load_scene_to_monitors(scene: PackedScene) -> void:
-	var instance = scene.instantiate()
+	var instance := scene.instantiate()
 	
 	for mapping: String in Global.monitor_mappings:
 		var monitor: MonitorMesh = Global.monitor_mappings[mapping]

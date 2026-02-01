@@ -127,7 +127,7 @@ transform = Transform3D(-4.47035e-08, 0, 1, 0, 1, 0, -1, 0, -4.47035e-08, 0.0318
 mesh = SubResource("PlaneMesh_qw6rv")
 skeleton = NodePath("../..")
 script = ExtResource("2_j5id2")
-sub_viewport = NodePath("../../TopMonitor/SubViewport")
+sub_viewport = NodePath("../SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="SideMonitor"]
 
