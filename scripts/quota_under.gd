@@ -22,9 +22,12 @@ func _process(delta):
 func add_to_sum(num:String):
 	if(which_num == 0):
 		sum += num.count("0")
+		print("adding zeroes")
 	else:
 		sum += num.count("1")
+		print("adding 1s")
 	$counter.set_number(str(sum))
+	print(sum)
 	
 func end_of_round():
 	if(sum < target):
@@ -33,7 +36,7 @@ func end_of_round():
 		return 1
 		
 func round_time():
-	return 20
+	return 40
 
 #This is for manually setting which_num in quota_two_targets
 func update_quota():

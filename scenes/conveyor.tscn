@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bt3go567is58x"]
+[gd_scene load_steps=3 format=3 uid="uid://bjau8xjgufxii"]
 
 [ext_resource type="Script" path="res://scripts/conveyor.gd" id="1_s50x8"]
 
 [sub_resource type="Curve2D" id="Curve2D_jxmb2"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 87, 654, 0, 0, 0, 0, 779, 81)
+"points": PackedVector2Array(0, 0, 0, 0, 11, 401, 0, 0, 0, 0, 843, 402)
 }
 point_count = 2
 

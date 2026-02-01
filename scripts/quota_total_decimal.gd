@@ -6,7 +6,7 @@ var target = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	target = randi_range(1500, 3000)
+	target = randi_range(1800, 3000)
 	$goal/goal_number.text = "Quota: " + str(target)
 
 
@@ -15,7 +15,7 @@ func _process(delta):
 	pass
 	
 func round_time():
-	return 65
+	return 75
 
 func add_to_sum(num:String):
 	sum += num.bin_to_int()
