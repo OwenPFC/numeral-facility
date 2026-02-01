@@ -1,3 +1,4 @@
+class_name MonitorMesh
 extends MeshInstance3D
 
 

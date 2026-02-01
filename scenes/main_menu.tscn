@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq6v0cbr26sxj"]
+[gd_scene load_steps=9 format=3 uid="uid://dq6v0cbr26sxj"]
 
-[ext_resource type="Theme" path="res://assets/main_theme.tres" id="1_4xwup"]
-[ext_resource type="Texture2D" path="res://assets/ui/logo.png" id="1_ylir1"]
+[ext_resource type="Theme" uid="uid://c1xawayic015h" path="res://assets/main_theme.tres" id="1_4xwup"]
+[ext_resource type="Texture2D" uid="uid://bth5bohgsls0b" path="res://assets/ui/logo.png" id="1_ylir1"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="2_duacu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eixy6"]
 
@@ -16,7 +17,9 @@ anti_aliasing = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5invw"]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMonitor" type="Node"]
+
+[node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,8 +27,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4xwup")
+script = ExtResource("2_duacu")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -34,7 +38,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 3.0
@@ -44,7 +48,7 @@ offset_bottom = 70.0
 texture = ExtResource("1_ylir1")
 stretch_mode = 4
 
-[node name="Button" type="Button" parent="."]
+[node name="PlayButton" type="Button" parent="MainMenu"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -67,3 +71,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_1fmjb")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_cgfpu")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_5invw")
 text = "Clock in"
+
+[connection signal="pressed" from="MainMenu/PlayButton" to="MainMenu" method="_on_play_button_pressed"]

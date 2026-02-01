@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbfhlhj31h7l7"]
+
+[ext_resource type="Texture2D" uid="uid://dwcpavqd2udn" path="res://assets/press/press_empty.png" id="1_l5bdq"]
+[ext_resource type="Script" path="res://scripts/press.gd" id="1_l8ak3"]
+[ext_resource type="Texture2D" uid="uid://yy4k5hweoo0k" path="res://assets/press/operations.png" id="2_3fd1n"]
+[ext_resource type="Texture2D" uid="uid://dwdnlrpwwwnrm" path="res://assets/press/onesandzeros.png" id="3_hm11g"]
+
+[node name="Press" type="Node2D"]
+script = ExtResource("1_l8ak3")
+
+[node name="PressHead" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_l5bdq")
+
+[node name="OperationSprite" type="Sprite2D" parent="PressHead"]
+position = Vector2(0, -1)
+texture = ExtResource("2_3fd1n")
+vframes = 8
+
+[node name="Bits" type="Node2D" parent="PressHead"]
+
+[node name="Bit" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(-14, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit2" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(-10, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit3" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(-6, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit4" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(-2, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit5" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(2, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit6" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(6, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit7" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(10, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
+
+[node name="Bit8" type="Sprite2D" parent="PressHead/Bits"]
+position = Vector2(14, 6)
+texture = ExtResource("3_hm11g")
+vframes = 2
